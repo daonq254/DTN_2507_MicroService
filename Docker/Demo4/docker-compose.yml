@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql_container_v1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+    ports:
+      - "3308:3306"   
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./DB_TestingSystem.sql:/docker-entrypoint-initdb.d/01_DB_TestingSystem.sql:ro
+
+volumes:
+  mysql_data:
+
+
